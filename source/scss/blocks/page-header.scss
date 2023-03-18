@@ -194,7 +194,7 @@
     color: $c-dark;
   }
 
-  ul {
+  &-list {
     @include list-reset;
     display: flex;
     align-items: center;
@@ -212,7 +212,7 @@
     }
   }
 
-  li {
+  &-item {
     margin-left: 4rem;
 
     @media (min-width: $stop-scaling) {
@@ -236,30 +236,29 @@
     }
   }
 
-  a {
+  &-link {
     position: relative;
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
+    transition: color 0.5s;
 
     &::after {
       content: "";
       position: absolute;
       bottom: 0;
-      width: 100%;
+      right: 0;
+      width: 0;
       height: 2px;
       background-color: $c-light;
-      display: none;
-      left: 0;
+      transition: width 0.5s, background-color 0.5s;
 
       @media (max-width: $tablet) and (orientation: portrait) {
-        left: 0;
         right: 0;
         background-color: $c-dark;
       }
 
       @media (max-width: $mobile) and (orientation: landscape) {
-        left: 0;
         right: 0;
         background-color: $c-dark;
       }
@@ -267,17 +266,19 @@
 
     &.active {
       &::after {
-        display: block;
+        width: 100%;
       }
     }
 
     &:hover,
     &:focus {
+      width: 100%;
       color: $c-purple;
       outline: none;
 
       &::after {
-        opacity: 1;
+        left: 0;
+        width: 100%;
         background-color: $c-purple;
       }
     }
