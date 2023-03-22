@@ -5,6 +5,12 @@
   right: 0;
   padding: 2.7rem 0;
   z-index: 10;
+  opacity: 0;
+  transition: opacity $long-time $init-time-func;
+
+  @include page-loaded {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     padding: 27px 0;
@@ -35,6 +41,12 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+  transform: translateX(-2rem);
+  transition: transform $medium-time $init-time-func;
+
+  @include page-loaded {
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -241,7 +253,7 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color 0.5s;
+    transition: color $medium-time;
 
     &::after {
       content: "";
@@ -251,7 +263,7 @@
       width: 0;
       height: 2px;
       background-color: $c-light;
-      transition: width 0.5s, background-color 0.5s;
+      transition: width $medium-time, background-color $medium-time;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         right: 0;
@@ -264,9 +276,11 @@
       }
     }
 
-    &.active {
-      &::after {
+    @include page-loaded {
+      &.active::after {
+        left: 0;
         width: 100%;
+        transition: width $medium-time;
       }
     }
 
