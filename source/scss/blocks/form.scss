@@ -44,7 +44,7 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
-  transition: all 0.7s;
+  transition: all $medium-time;
 
   .active & {
     flex-grow: 1;

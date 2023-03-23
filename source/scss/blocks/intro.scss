@@ -95,7 +95,7 @@
   line-height: 1.27;
   opacity: 0;
   transform: translateY(1.5rem);
-  transition: all 0.8s;
+  transition: all $long-time;
 
   .active & {
     opacity: 1;
